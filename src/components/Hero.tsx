@@ -3,24 +3,12 @@ export function Hero() {
     <section className="hero" id="top">
       <div className="container hero-grid">
         <div>
-          <div className="eyebrow">In-home spa · Popoyo, Nicaragua</div>
-          <h1>Luxury spa care brought to your villa</h1>
-          <p className="sub">
-            Hair, nails, massage, and optional childcare in the Popoyo area,
-            delivered to your villa, hotel, retreat, or beach house.
-          </p>
+          <div className="eyebrow">Popoyo, Nicaragua</div>
+          <h1>Spa care at your villa.</h1>
+          <p className="sub">Massage, hair, and nails. We come to you.</p>
           <div className="ctas">
-            <a className="btn btn-primary" href="#book">
-              Build your appointment
-            </a>
-            <a className="btn btn-secondary" href="#services">
-              View services
-            </a>
-          </div>
-          <div className="bullets">
-            <span><span className="pip" /> In-home service</span>
-            <span><span className="pip" /> Multi-service booking</span>
-            <span><span className="pip" /> Family-friendly options</span>
+            <a className="btn btn-primary" href="#book">Book</a>
+            <a className="btn btn-secondary" href="#services">Services</a>
           </div>
         </div>
         <div className="hero-art" aria-hidden="true">
@@ -59,25 +47,14 @@ function HeroIllustration() {
           <stop offset="1" stopColor="#cba980" />
         </linearGradient>
       </defs>
-
-      {/* Sky */}
       <rect width="400" height="500" fill="url(#sky)" />
-
-      {/* Sun */}
       <circle cx="200" cy="220" r="160" fill="url(#sun)" />
       <circle cx="200" cy="220" r="55" fill="#fdf0d9" opacity="0.85" />
-
-      {/* Distant horizon ocean */}
       <path d="M0,300 Q200,290 400,300 L400,360 L0,360 Z" fill="url(#ocean)" opacity="0.85" />
-
-      {/* Soft surf line */}
       <path d="M0,355 Q80,348 160,355 T320,355 T400,353" stroke="#fdf8f0" strokeWidth="1.5" fill="none" opacity="0.6" />
       <path d="M0,365 Q120,360 240,366 T400,365" stroke="#fdf8f0" strokeWidth="1" fill="none" opacity="0.45" />
-
-      {/* Beach */}
       <path d="M0,360 Q200,375 400,360 L400,500 L0,500 Z" fill="url(#sand)" />
 
-      {/* Palm silhouettes — left */}
       <g opacity="0.9">
         <path d="M50,500 C48,420 52,360 55,300" stroke="#3b2a22" strokeWidth="3.5" fill="none" strokeLinecap="round" />
         <Frond cx={55} cy={300} angle={-95} flip={false} />
@@ -86,8 +63,6 @@ function HeroIllustration() {
         <Frond cx={55} cy={300} angle={20} flip={false} />
         <Frond cx={55} cy={300} angle={50} flip={false} />
       </g>
-
-      {/* Palm silhouettes — right (smaller, set back) */}
       <g opacity="0.75">
         <path d="M345,500 C347,440 343,400 340,360" stroke="#3b2a22" strokeWidth="2.5" fill="none" strokeLinecap="round" />
         <Frond cx={340} cy={360} angle={-100} flip={true} scale={0.7} />
@@ -96,7 +71,6 @@ function HeroIllustration() {
         <Frond cx={340} cy={360} angle={25} flip={true} scale={0.7} />
       </g>
 
-      {/* Lotus motif (foreground) */}
       <g transform="translate(200 430)">
         <Petal angle={-90} fill="#d68a6c" />
         <Petal angle={-55} fill="#c97a5b" />
@@ -109,43 +83,20 @@ function HeroIllustration() {
         <Petal angle={35} fill="#e09a7d" scale={0.8} />
         <ellipse cx="0" cy="-3" rx="6" ry="9" fill="#fdf0d9" opacity="0.95" />
       </g>
-
-      {/* Subtle grain via dots */}
-      <g fill="#fdf8f0" opacity="0.18">
-        <circle cx="60" cy="120" r="1" />
-        <circle cx="320" cy="80" r="1" />
-        <circle cx="280" cy="160" r="1" />
-        <circle cx="100" cy="240" r="1" />
-      </g>
     </svg>
   );
 }
 
-function Frond({
-  cx, cy, angle, flip, scale = 1,
-}: { cx: number; cy: number; angle: number; flip: boolean; scale?: number }) {
+function Frond({ cx, cy, angle, flip, scale = 1 }: { cx: number; cy: number; angle: number; flip: boolean; scale?: number }) {
   const sx = (flip ? -1 : 1) * scale;
   return (
     <g transform={`translate(${cx} ${cy}) rotate(${angle}) scale(${sx} ${scale})`}>
-      <path
-        d="M0,0 C20,-4 50,-8 90,-2 C70,-1 50,1 0,4 Z"
-        fill="#3b2a22"
-        opacity="0.85"
-      />
-      <path
-        d="M10,0 L80,-3 M15,1 L70,-1 M22,2 L60,1"
-        stroke="#5a4339"
-        strokeWidth="0.6"
-        opacity="0.5"
-        fill="none"
-      />
+      <path d="M0,0 C20,-4 50,-8 90,-2 C70,-1 50,1 0,4 Z" fill="#3b2a22" opacity="0.85" />
     </g>
   );
 }
 
-function Petal({
-  angle, fill, scale = 1,
-}: { angle: number; fill: string; scale?: number }) {
+function Petal({ angle, fill, scale = 1 }: { angle: number; fill: string; scale?: number }) {
   return (
     <g transform={`rotate(${angle}) scale(${scale})`}>
       <ellipse cx="0" cy="-22" rx="9" ry="24" fill={fill} />

@@ -23,15 +23,10 @@ export function ServicesSection({ services, selectedSlugs, onToggle }: Props) {
     <section id="services">
       <div className="container">
         <div className="section-head">
-          <div className="eyebrow">Service menu</div>
-          <h2>Build a single treatment or a full villa spa day</h2>
-          <p>
-            Tap to add services to your booking. You can combine massage, hair,
-            nails, body rituals, and childcare in one request.
-          </p>
+          <h2>Services</h2>
         </div>
 
-        <div className="filters" role="tablist" aria-label="Filter services by category">
+        <div className="filters" role="tablist">
           {CATEGORIES.map((c) => (
             <button
               key={c}
@@ -49,29 +44,22 @@ export function ServicesSection({ services, selectedSlugs, onToggle }: Props) {
           {filtered.map((s) => {
             const selected = selectedSlugs.has(s.slug);
             return (
-              <article key={s.slug} className={`card ${selected ? "selected" : ""}`}>
-                {selected && <span className="selected-pill">Selected</span>}
-                <span className="cat">{s.category}</span>
-                <h3>{s.name}</h3>
-                <p className="desc">{s.description}</p>
-                <div className="meta">
-                  <div>
-                    <div className="price">
-                      {s.priceLabel ?? formatPrice(s.priceUSD)}
-                    </div>
-                    <div className="duration">
-                      {s.durationLabel ?? formatDuration(s.durationMinutes)}
-                    </div>
-                  </div>
-                  <button
-                    className="select-btn"
-                    onClick={() => onToggle(s.slug)}
-                    aria-pressed={selected}
-                  >
-                    {selected ? "✓ Added" : "Add to booking"}
-                  </button>
+              <button
+                key={s.slug}
+                type="button"
+                className={`card service-card ${selected ? "selected" : ""}`}
+                onClick={() => onToggle(s.slug)}
+                aria-pressed={selected}
+              >
+                <div className="row-top">
+                  <h3>{s.name}</h3>
+                  <span className="price">{s.priceLabel ?? formatPrice(s.priceUSD)}</span>
                 </div>
-              </article>
+                <div className="row-bot">
+                  <span className="duration">{s.durationLabel ?? formatDuration(s.durationMinutes)}</span>
+                  <span className="check" aria-hidden="true">{selected ? "✓" : "+"}</span>
+                </div>
+              </button>
             );
           })}
         </div>

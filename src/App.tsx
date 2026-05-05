@@ -1,7 +1,6 @@
 import { useCallback, useState } from "react";
 import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
-import { TrustStrip } from "./components/TrustStrip";
 import { ServicesSection } from "./components/ServicesSection";
 import { PackagesSection } from "./components/PackagesSection";
 import { HowItWorks } from "./components/HowItWorks";
@@ -14,7 +13,6 @@ import type { Selection } from "./lib/booking";
 import { defaultConfig, defaultServices, defaultPackages } from "./lib/seedData";
 
 export default function App() {
-  // Static content for now — Convex layer is opt-in (see README).
   const config = defaultConfig;
   const services = defaultServices;
   const packages = defaultPackages;
@@ -38,7 +36,7 @@ export default function App() {
   }, []);
 
   const headerWaLink = buildWhatsAppLink(
-    `Hi ${config.businessName}, I'd like to ask about a booking.`,
+    `Hi ${config.businessName}.`,
     config.whatsappNumber
   );
 
@@ -47,7 +45,6 @@ export default function App() {
       <Header whatsappLink={headerWaLink} />
       <main>
         <Hero />
-        <TrustStrip />
         <ServicesSection
           services={services}
           selectedSlugs={selection.serviceSlugs}
