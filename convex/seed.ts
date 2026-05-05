@@ -34,7 +34,7 @@ export const all = mutation({
         { id: "wise", label: "Wise", enabled: true },
         { id: "revolut", label: "Revolut", enabled: true },
         { id: "venmo", label: "Venmo (if available)", enabled: true },
-        { id: "local_transfer", label: "Local transfer (if available)", enabled: true },
+        { id: "bank_transfer", label: "Bank transfer (details sent by email)", enabled: true },
       ],
       serviceAreas: [
         "Popoyo",
