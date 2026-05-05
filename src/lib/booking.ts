@@ -1,8 +1,6 @@
-import type { Doc } from "../../convex/_generated/dataModel";
+import type { Service, Package, Config } from "./types";
 
-export type Service = Doc<"services">;
-export type Package = Doc<"packages">;
-export type Config = Doc<"config">;
+export type { Service, Package, Config };
 
 export type Selection = {
   serviceSlugs: Set<string>;
@@ -72,7 +70,6 @@ export function computeTotals(
       continue;
     }
     total += p.priceUSD;
-    // Packages don't carry an explicit duration in the spec; estimate conservatively.
     duration += 90;
   }
 

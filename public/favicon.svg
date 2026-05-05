@@ -1,4 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#c97a5b"/>
-  <text x="32" y="42" text-anchor="middle" font-family="Georgia, serif" font-size="34" font-weight="600" fill="#fdf8f0">P</text>
+  <rect width="64" height="64" rx="14" fill="#f3ead9"/>
+  <g transform="translate(32 36)">
+    <!-- Outer petals -->
+    <ellipse cx="-18" cy="0" rx="6" ry="13" fill="#c97a5b" opacity="0.85" transform="rotate(-65)"/>
+    <ellipse cx="18" cy="0" rx="6" ry="13" fill="#c97a5b" opacity="0.85" transform="rotate(65)"/>
+    <ellipse cx="-12" cy="-8" rx="6" ry="14" fill="#d68a6c" opacity="0.9" transform="rotate(-35)"/>
+    <ellipse cx="12" cy="-8" rx="6" ry="14" fill="#d68a6c" opacity="0.9" transform="rotate(35)"/>
+    <!-- Center petal -->
+    <ellipse cx="0" cy="-12" rx="6" ry="15" fill="#e09a7d"/>
+    <!-- Inner accent -->
+    <ellipse cx="0" cy="-6" rx="3" ry="8" fill="#f1c9a8"/>
+    <!-- Base -->
+    <path d="M -22 2 Q 0 14 22 2 Q 12 8 0 8 Q -12 8 -22 2 Z" fill="#6f7d66"/>
+  </g>
 </svg>

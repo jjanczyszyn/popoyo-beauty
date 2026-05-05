@@ -1,6 +1,4 @@
 import { useMemo, useState } from "react";
-import { useMutation } from "convex/react";
-import { api } from "../../convex/_generated/api";
 import type { Service, Package, Config, Selection, BookingFields } from "../lib/booking";
 import {
   computeTotals,
@@ -33,8 +31,6 @@ export function BookingSection({
   selection,
   setSelection,
 }: Props) {
-  const submit = useMutation(api.bookingRequests.submit);
-
   const [fields, setFields] = useState<BookingFields>({
     name: "",
     phone: "",
@@ -115,30 +111,6 @@ export function BookingSection({
 
     setSubmitting(true);
     try {
-      await submit({
-        name: fields.name.trim(),
-        phone: fields.phone.trim(),
-        location: fields.location.trim(),
-        preferredDate: fields.preferredDate,
-        preferredTime: fields.preferredTime,
-        guestCount: fields.guestCount,
-        selectedServiceSlugs: Array.from(selection.serviceSlugs),
-        selectedPackageSlugs: Array.from(selection.packageSlugs),
-        childcareHours: childcareSelected ? selection.childcareHours : undefined,
-        notes: fields.notes?.trim() || undefined,
-        pressurePreference: fields.pressurePreference?.trim() || undefined,
-        allergies: fields.allergies?.trim() || undefined,
-        pregnancyStatus: fields.pregnancyStatus?.trim() || undefined,
-        childrenAges: fields.childrenAges?.trim() || undefined,
-        accessDetails: fields.accessDetails?.trim() || undefined,
-        specialOccasion: fields.specialOccasion?.trim() || undefined,
-        languagePreference: fields.languagePreference?.trim() || undefined,
-        paymentPreference: fields.paymentPreference?.trim() || undefined,
-        estimatedTotalUSD: totals.totalUSD,
-        estimatedDepositUSD: totals.depositUSD,
-        estimatedDurationMinutes: totals.durationMinutes,
-      });
-
       const message = buildWhatsAppMessage(
         fields, selection, services, packages, totals, config
       );

@@ -20,6 +20,6 @@
     "allowSyntheticDefaultImports": true,
     "types": ["vite/client"]
   },
-  "include": ["src", "convex"],
-  "exclude": ["node_modules", "dist", "convex/_generated"]
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
 }

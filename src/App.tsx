@@ -1,6 +1,4 @@
 import { useCallback, useState } from "react";
-import { useQuery } from "convex/react";
-import { api } from "../convex/_generated/api";
 import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
 import { TrustStrip } from "./components/TrustStrip";
@@ -13,11 +11,13 @@ import { Faq } from "./components/Faq";
 import { Footer } from "./components/Footer";
 import { emptySelection, buildWhatsAppLink } from "./lib/booking";
 import type { Selection } from "./lib/booking";
+import { defaultConfig, defaultServices, defaultPackages } from "./lib/seedData";
 
 export default function App() {
-  const config = useQuery(api.config.get);
-  const services = useQuery(api.services.list);
-  const packages = useQuery(api.packages.list);
+  // Static content for now — Convex layer is opt-in (see README).
+  const config = defaultConfig;
+  const services = defaultServices;
+  const packages = defaultPackages;
 
   const [selection, setSelection] = useState<Selection>(emptySelection);
 
@@ -36,17 +36,6 @@ export default function App() {
       return { ...s, packageSlugs: next };
     });
   }, []);
-
-  if (config === undefined || services === undefined || packages === undefined) {
-    return <div className="loading">Loading…</div>;
-  }
-  if (!config) {
-    return (
-      <div className="loading">
-        Site not configured yet. Run <code style={{ marginLeft: 6 }}>npx convex run seed:all</code> to seed the database.
-      </div>
-    );
-  }
 
   const headerWaLink = buildWhatsAppLink(
     `Hi ${config.businessName}, I'd like to ask about a booking.`,
