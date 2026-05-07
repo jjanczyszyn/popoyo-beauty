@@ -4,7 +4,7 @@ Single-page site for **Popoyo Beauty** — in-home spa services in Popoyo, Nicar
 
 - Frontend: Vite + React 18 + TypeScript (static build → GitHub Pages)
 - Backend / DB: [Convex](https://convex.dev) (services, packages, config, booking requests)
-- Live domain: **beauty.justinalydia.com** (GitHub Pages custom domain)
+- Live domain: **beauty.popoyo.co** (GitHub Pages custom domain)
 
 The site reads its services, packages, payment methods, WhatsApp number, and
 service areas from Convex so the owner can edit them in the dashboard without
@@ -88,8 +88,8 @@ In **Settings → Pages**, set **Source** to *GitHub Actions*. The workflow at
 
 ### 5. Configure the custom domain
 
-`public/CNAME` already contains `beauty.justinalydia.com`, which Pages will
-honor. Add this DNS record at the `justinalydia.com` registrar:
+`public/CNAME` already contains `beauty.popoyo.co`, which Pages will
+honor. Add this DNS record at the `popoyo.co` registrar:
 
 ```
 beauty   CNAME   <your-github-username>.github.io.
@@ -132,7 +132,7 @@ src/
                        PackagesSection, HowItWorks, BookingSection,
                        ServiceArea, Faq, Footer
 public/
-  CNAME                beauty.justinalydia.com
+  CNAME                beauty.popoyo.co
   favicon.svg
 .github/workflows/
   deploy.yml           build + push to GitHub Pages
